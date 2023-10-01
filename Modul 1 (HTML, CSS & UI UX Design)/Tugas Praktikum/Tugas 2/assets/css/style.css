@@ -21,20 +21,27 @@ h2 {
 }
 
 .custom-signup {
-    border-radius: 11px;
+    padding: 5px 28px;
+    border-radius: 12px;
 }
 
 .custom-login {
     background-color: #6B86EA;
-    border-radius: 11px;
+    padding: 5px 28px;
+    border-radius: 12px;
 }
 
 .custom-login:hover {
     background-color: #6B86EA;
 }
 
-#hero {
+.custom-hero {
     height: 100vh;
+}
+
+.custom-img-footer {
+    margin-bottom: 13px; 
+    margin-top: 74px;
 }
 
 .custom-logo-footer {

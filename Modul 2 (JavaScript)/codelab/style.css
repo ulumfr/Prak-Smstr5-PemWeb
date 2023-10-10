@@ -1,0 +1,35 @@
+body {
+    background-color: #3498DB;
+}
+
+.container {
+    background-color: #fff;
+    max-width: 335px;
+    margin: 40px auto;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+label {
+    display: block;
+    margin-bottom: 7px;
+    color: #777;
+}
+
+input, textarea {
+    width: 95.5%;
+    padding: 8px;
+    margin-bottom: 5px;
+    border: none;
+    color: #777; 
+    background-color: #EFEFEF; 
+}
+
+button {
+    background-color: #3498DB;
+    color: #fff;
+    font-size: 17px;
+    padding: 5px 9px;
+    border: none;
+    cursor: pointer;
+}

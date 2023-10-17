@@ -58,7 +58,7 @@ body {
     color: var(--text-color);
 }
 
-.row {
+.column-calcu {
     display: flex;
     flex-direction: column;
 }

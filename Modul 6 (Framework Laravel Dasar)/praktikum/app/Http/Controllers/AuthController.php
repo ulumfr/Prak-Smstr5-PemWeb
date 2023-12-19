@@ -6,6 +6,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Http\Resources\Auth\AuthResource;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
@@ -27,6 +28,7 @@ class AuthController extends Controller
     public function login(LoginRequest $request)
     {
         $validateReq = $request->validated();
+
         if (Auth::attempt($validateReq)) {
             $user = $request->user();
             $token = $user->createToken("access_token")->plainTextToken;
@@ -37,9 +39,20 @@ class AuthController extends Controller
             ], 200);
         } else {
             return response()->json([
-                "message" => "Login Failed",
-                "data" => null,
+                "message" => "Email or password is incorrect",
+                "data" => null
             ], 401);
         }
+    }
+
+    public function logout(Request $request)
+    {
+        $user = $request->user();
+
+        $user->currentAccessToken()->delete();
+
+        return response()->json([
+            'message' => 'Logout Success',
+        ]);
     }
 }

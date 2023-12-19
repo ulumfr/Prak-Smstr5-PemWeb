@@ -34,8 +34,10 @@ class AuthController extends Controller
             $token = $user->createToken("access_token")->plainTextToken;
 
             return response()->json([
-                "message" => "Login successful",
-                "data" => $token,
+                "message" => "Login Successful",
+                "data" => [
+                    "access_token" => $token
+                ],
             ], 200);
         } else {
             return response()->json([

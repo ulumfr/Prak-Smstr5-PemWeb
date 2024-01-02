@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UAP Praktikum Web</title>
+</head>
+<body style="background-color: antiquewhite;">
+    <div>
+        <h1 style="text-align: center;">Kasir Sederhana</h1>
+    </div>
+
+    <div style="padding: 10px 0 0 10px;">
+        <table border="1">
+            <tr>
+                <td style="font-weight: bold;">Kode</td>
+                <td style="font-weight: bold;">Barang</td>
+                <td style="font-weight: bold;">Harga</td>
+            </tr>
+            <tr>
+                <td>001</td>
+                <td>Barang A</td>
+                <td id="001">10000</td>
+            </tr>
+            <tr>
+                <td>002</td>
+                <td>Barang B</td>
+                <td id="002">20000</td>
+            </tr>
+            <tr>
+                <td>003</td>
+                <td>Barang C</td>
+                <td id="003">30000</td>
+            </tr>
+        </table>
+    </div>
+
+    <div style="padding: 10px 0 0 10px;">
+        <h3>Inputan User</h3>
+        <form>
+            <div style="padding-bottom: 10px;">
+                <label for="inputKode">Input Kode Barang : </label>
+                <input type="text" id="inputKode" required>
+            </div>
+            <div style="padding-bottom: 10px;">
+                <label for="inputBarang">Banyaknya Barang : </label>
+                <input type="number" id="inputBarang" required>
+            </div>
+            <div>
+                <button type="submit" onclick="kasir()">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function kasir() {
+            let kodeBarang = document.getElementById('inputKode').value;
+            let qtyBarang = document.getElementById('inputBarang').value;
+
+            if (!kodeBarang || !qtyBarang) {
+                alert("Tidak Boleh Kosong, Mohon diisi !!!");
+                return;
+            }
+
+            let hargaElement = document.getElementById(kodeBarang);
+
+            if(hargaElement) {
+                let harga = hargaElement.innerText;
+                let total = harga * qtyBarang;
+                alert("Total pembayaran adalah : " + total);
+                
+                let inputUser = prompt("Masukan uang user : ");
+                while(inputUser == '' || inputUser == null){
+                    alert("Jumlah uang harus diisi");
+                    inputUser = prompt("Masukan uang user : ");
+                }
+
+                let kembalian = inputUser - total;
+
+                if(kembalian < 0) {
+                    alert("Uang anda kurang : " + kembalian)
+                }else {
+                    alert("Total kembalian anda adalah : " + kembalian)
+                }
+            }else{
+                alert("Kode: " + kodeBarang + " tidak ada dalam list");
+            }
+        }
+    </script>
+</body>
+</html>
